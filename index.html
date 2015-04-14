@@ -1,1 +1,802 @@
-My Page
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DS3 Final Project - Million Song</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <link href="css/pygment_trac.css" rel="stylesheet">
+    <link href="css/agency.css" rel="stylesheet">
+
+   
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="page-scroll" href="#page-top">Top&#x25b2;</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Intro & Data</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Explore</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">Predict</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#team">Teamwork</a>
+                    </li>
+                    <!--<li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                        </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header id="header_wrap">
+        <div class="container">
+            <div class="intro-text">
+                <!--<div class="intro-lead-in">Welcome To Our Studio!</div>
+                <div class="intro-heading">It's Nice To Meet You</div>
+                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>-->
+	        <h1 id="project_title">The Million Song Dataset:</h1>
+                <h2 id="project_tagline">An Exploratory Analysis and Year Predictive Model</h2>
+		<h2 id="project_tagline" style="margin-left: -20%">Presented on behalf of the</h2>
+          	<a href="http://ds3.ucsd.edu">
+	        	<img width="413" height="153" style="display: block; margin-left: auto; margin-right: auto" src="images/DS3-Logo.png"></img>
+		</a>
+            </div>
+        </div>
+    </header>
+
+<div id="main_content_wrap">
+    <!-- Services Section -->
+    <section id="services" class="bg-light-gray inner">
+	    <br />
+	    <br />
+            <br />
+	    <h3>Intro</h3>
+
+	    <p>For our final portfolio project in Dr. Jelena Bradic's vibrant
+		<a href="https://math189.edublogs.org/">Math 189: Data Analysis and Inference</a> class of Winter 2015,
+		one of UCSD's newest and exciting Data Science courses designed for a variety students from interdisciplinary backgrounds,
+		the members of the Data Science Student Society at UCSD accepted the challenge of deriving valuable insights from
+		one of the largest collection of music datasets online: the
+			<a href="http://labrosa.ee.columbia.edu/millionsong/">Million Song Dataset</a>!
+	    </p>
+
+	    <br />
+
+	    <h3>Data</h3>
+
+            <p>We utilized a combination of different and smaller subsets of the initial 300GB total music dataset:</p>
+            <p>
+            	<ul>
+	        	<li>The available and kindly provided <a href="http://labrosa.ee.columbia.edu/millionsong/pages/getting-dataset#subset">1.8GB subset</a></li>
+                        <li>A filtered half-million tracks with by year labels using 12 timbre segment features and their 78 correlations, available on the <a href="https://archive.ics.uci.edu/ml/datasets/YearPredictionMSD">UCI Machine Learning repository</a></li>
+                        <li>Subset of size 4.2 MB with 42 features available on our <a href="https://www.google.com/fusiontables/DataSource?docid=1x4igm38r8EdoVRH_tIQbccSCKZymsbxt0lxxJDfq">Google Fusion Tables</a>, gathered as described by this IPython notebook file <a href="http://nbviewer.ipython.org/github/DS3-at-UCSD/msd-fp-ds3/blob/master/grab_msd_data.ipynb">"grab_msd_data"</a> which takes ballpark 18 hours to search around half a million songs with year label information</li>
+                </ul>
+            </p>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio" class="bg-light-gray inner">
+	<br />
+	<br />
+	<br />
+	<h3>Basic Univariate Analysis</h3>
+
+	<p>Since our general predictive task is to model year, we decided to perform study the year information first in order to see if we
+can spot some general trends.
+	</p>
+
+	<p>Exploring the distribution of labels is a good approach before developing a machine learning model since some
+models are designed to implicitly learn the structure or probability distribution of our data.
+	</p>
+
+	<p>
+	Below is a simple discrete histogram produced in R that shows songs have been increasing in frequency and in what seems to be a nonlinear pattern over time.
+	</p>
+
+	<h5 style="margin-left: 10%" >Q1: How many songs are in our dataset and how are they distributed?</h5>
+
+	<p>
+		<img src="images/track_frequency_over_years.png"></img>
+	</p>
+
+	<p>We notice that the frequency of the counts start to take off in the late 1970s to dawn of 1980s, likely coinciding with the invention of the CDs by Philips and Sony!
+	</p>
+
+	<p>
+		<img src="images/cd.png" height=400 width=400></img>
+	</p>
+
+	<br />
+
+	<p>Speaking of certain circular objects like the CD, which can be considered as one of the first digital device media used for mass manufacturing music recordings, another excellent visualization we can use to quickly eyeball the proportion of songs per decade is the classic pie chart, easily created through the power of Google Fusion Tables (you can interactively hover your mouse over to show the absolute counts in the subset).
+	</p>
+
+	<br />
+
+<!--	<iframe style="display: block;  margin-left: auto; margin-right: auto;"  width="600" height="300" scrolling="no" frameborder="no"
+src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col13%2C+count()+from+17GZpCI5W3rWsQi-1lksq8lG4-Ws0pQdLZGnDfyAY+group+by+col13+order+by+col13+asc+limit+10&amp;viz=GVIZ&amp;t=PIE&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_useFirstColumnAsDomain=true&amp;gco_is3D=false&amp;gco_pieHole=0&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D&amp;gco_vAxes=%5B%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_legend=right&amp;gco_slices=%7B%220%22%3A%7B%22color%22%3A%22%233366cc%22%7D%7D&amp;gco_title=Song+Distribution+by+Decade+in+UCI+Training+Set&amp;gco_pieSliceBorderColor=%23000000&amp;width=500&amp;height=300"></iframe>
+-->
+<p><img><iframe width="600" height="300" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col13%2C+count()+from+17GZpCI5W3rWsQi-1lksq8lG4-Ws0pQdLZGnDfyAY+group+by+col13+order+by+col13+asc+limit+10&amp;viz=GVIZ&amp;t=PIE&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_useFirstColumnAsDomain=true&amp;gco_is3D=false&amp;gco_pieHole=0&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D&amp;gco_vAxes=%5B%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_legend=right&amp;gco_slices=%7B%220%22%3A%7B%22color%22%3A%22%233366cc%22%7D%7D&amp;gco_title=Song+Distribution+by+Decade+in+UCI+Training+Set&amp;gco_pieSliceBorderColor=%23000000&amp;att=true&amp;width=600&amp;height=285"></iframe></img></p>
+
+
+	<p>Before building our model to predict year which is later down the road, we take to heart the wise aphorism:</p>
+
+	<blockquote>
+		<p>"Essentially, all models are wrong, but some are useful."</p>
+		<p><small>George E.P. Box, statistician</small></p>
+	</blockquote>
+
+	<p>That great man inspired and reminded us that we need to closely study the year information of our dataset to a degree so that we can develop a useful, but not necessarily correct, year prediction model for it. Also, his namesake happens to be another great reminder of how we can visualize outliers in our year data too with the Box-and-Whisker plot below.
+	</p>
+
+	<img src="images/box.png" height=350px width=240px style="display: inline; float: left"></img>
+	<img src="images/yr_numerical_summary.png" height=350px style="display: inline; float: right"></img>
+
+	<p style="clear: both">What we can clearly see is that the central mass between the 1st and 3rd quartiles lies in years ranging from the mid 1990s to the mid 2000s. We also computed the proportion of songs from 1922 to 1976 and found that they only represent a small fraction of our sample -- 5%!  Other summary statistics on year we calculated are tabularized using R's fancy stargazer package located to the right of the boxplot.
+	</p>
+
+	<p>
+		<img src="images/hist_w_max.png"></img>
+	</p>
+
+	<p>In the above density plot, when we drop the outliers pre-1976, around the time of the introduction of the CD, we still wonder at what kind of distribution it represents and whether it is normal or not. What we do know is that, given the moment values calculated by R that there is a slight negative (left) skew and that it is super peaky, nearly twice or more so than the 3.0 kurtosis value of a normal distribution!
+	<br />
+	<br />
+	<img src="images/yrs_moments.png"></img>
+	</p>
+
+	<h5 style="margin-left: 25%" >Q2: Why is the peak song count at year 2007?</h5>
+
+	<p>We see from the distribution of the number of songs that over 50% of the songs in the dataset are from the 2000-2010 year increment. From looking further into the advancements in technology over time, we observed that the increase in the development of technology used to play and share music such as mp3 players, iPods and iPhone’s during this time period can explain this trend.
+	</p>
+
+	<p>As a team, we looked over the history of music recording hardware and found that 2007 is the year that the 1st Generation iPhone got released, but whether that is a signficant contributing factor remains another question to be investigated. And why is their a sudden decline after 2007? Is it related to how the data was processed and gathered? Can another factor like economic climate for music industry sales records be a better explanation than the actual hardware?
+
+		<img src="images/1stgeniphone.jpg"></img>
+	</p>
+
+	<h5 style="margin-left: 15%">Q3: If the song count distribution is not normal, what is it?</h5>
+
+	<p>We are guessing it looks exponential and thought that Moore's Law might apply.For those who are not tech-savvy, the phenomenon of increasing hardware memory can be summarized within a sentence provided by wikipedia:
+	</p>
+
+	<blockquote>
+		<p>"Moore's law" is the observation that, over the history of computing hardware, the number of transistors in a dense integrated circuit doubles approximately every two years.</p>
+  		<p>
+			<small>attribution: <a href="http://en.wikipedia.org/wiki/Moore%27s_law">Wikipedia on Moore's Law</a>
+			</small>
+		</p>
+	</blockquote>
+
+	<p>The idea is that if hardware memory doubles biennially, then the number of songs on those devices like the iPhone should also grow exponentially, with base equal to 2. 
+	</p>
+
+	<p>We remembered that in one of our homeworks in MATH 189: Data Analysis and Inference we read Nina Zumel's <a href="http://www.r-statistics.com/2013/05/log-transformations-for-skewed-and-wide-distributions-from-practical-data-science-with-r/">blog post on log transforming skewed distributions</a>, so we tried to apply that to our year data as well.
+	</p>
+
+	<p>1. First we have the absolute counts of the song divied up by every two years
+		<img src="images/biennial_count.png"></img>
+		<br />
+	   2. Next we logarithmize Y-axis by 2 and plot a regression line
+
+		<img src="images/biennial_log2.png"></img>
+
+		<br />
+	   3. Finally we summarized the regression by calculating the correlation (using with a 95% confidence interval)
+
+		<img src="http://latex.codecogs.com/gif.latex?r^2_{\textrm{Year,&space;}log_2(Count)}&space;=&space;0.965153" title="r^2_{\textrm{Year, }log_2(Count)} = 0.965153" />
+ 
+		<br />
+
+	       and finding its equational form
+
+		<img src="http://latex.codecogs.com/gif.latex?{{{log_2(Count)}}}&space;=&space;0.14&space;\cdot&space;\textrm{Year}_{bi}&space;-272.35" title="{{{log_2(Count)}}} = 0.14 \cdot \textrm{Year}_{bi} -272.35" />
+
+	</p>
+
+	<p>Although the the relationship between the log-transformed song count and year is very linear, we still have not found a good answer to the question of what sort of distribution song count belongs to or whether Moore's Law applies.</p>
+
+	<p>Additional reading:
+		<ol>
+			<li><a href="http://ninazumel.com/2014/08/11/women-in-data-science-positive-imagery-for-the-win/">Nina Zumel's Practical Data Science with R book</a></li>
+			  <li><a href="http://www.jstor.org/stable/25662336?seq=1#page_scan_tab_contents"> Clauset, Aaron, Cosma Rohilla Shalizi, and Mark EJ Newman. "Power-law distributions in empirical data." SIAM review 51.4 (2009): 661-703.</a> </li>
+		</ol>
+
+	   and testing is required.
+	</p>
+
+	<br />
+	<h3>Temporal Data</h3>
+	<p>Although we understand that comparing the other feature variables over time neither qualifies it as univariate analysis nor specifically a time series analysis, it still made a huge difference that we decided to proceed and visualize it for the sake of discovering any possible insights. Some of the more interesting relationships are captured in the below super scatter-boxplot-lineplot graphs. By "interesting," we define the term by saying that the blue line plot which connects the means of the values every two years is not too flat and horizontal. Each possesses an interesting historical context in the past.</p>
+
+	<h5 style="margin-left: 35%" >Loudness Wars</h5>
+	<p>The increase of music loudness over time is basically a result of the economic principle of competition, everyone is trying to get their voices heard! 
+		<img src="images/yr_vs_loudness.png" height=500px width=500px />
+	</p>
+
+	<blockquote>
+		<p>Modern recordings that use extreme dynamic range compression and other measures to increase loudness therefore can sacrifice sound quality to loudness. The competitive escalation of loudness has led music fans and members of the musical press to refer to the affected albums as "victims of the loudness war."
+		</p>
+		<p><small>attribution: <a href="http://en.wikipedia.org/wiki/Loudness_war">Wikipedia on the Loudness Wars</a></small></p>
+	</blockquote>
+
+
+	<h5 style="margin-left: 35%">Album Oriented Rock Format</h5>
+	<p>After a historic low around the late 1950’s, we see an increase (and maintenance) to longer song duration. This coincides with the rise of “album oriented rock” during the 1960’s and 1970’s, when radio DJ’s were given freedom to play long sets of songs and, consequently, gave rise to songs formats that weren’t necessarily created as “singles,” but rather were constructed with whole albums in mind. <img src="images/yr_vs_duration.png" height=500px width=500px />
+	</p>
+
+	<h5 style="margin-left: 35%">Disco in the 70s</h5>
+	<p>It is hard to draw conclusions from this because of the high variance, but we can see the general tempo increasing and peaking until the 70s (Disco music) where it stays fairly constant.  One thing we can gather from the higher variance is that now people can easily find something matching their preference or current mood so all types of music lovers are satisfied. In the 1960s, the pop and rock R&B were slower in tempo than modern day.
+		<img src="images/yr_vs_tempo.png" height=500px width=500px />
+	</p>
+
+	<p>(A great deal of thanks to music history expert and captivating storyteller Vicente Malave for helping discover the above insights!)</p>
+
+	<br />
+	<h3>Feature Analysis</h3>
+	<p>We calculated the correlations between features both from the extended year and the UCI subset and visualize their values with the following heatmap below.
+	</p>
+
+	<div>
+		<iframe width="640" height="480" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~kevin11h/56.embed?width=640&height=480" ></iframe> 
+	</div>
+
+	<br />
+
+	<div>
+		<iframe width="640" height="480" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~kevin11h/60.embed?width=640&height=480" ></iframe> 
+	</div>
+
+	<br />
+
+	<h5 style="margin-left: 10%" >Q5: Excluding the year labels, what are good features in our datasets we can use in our model?</h5>
+
+	<p>Now that we are given a more convenient view on the correlations, we can attempt to find an answer to the above question. We see from the map of the 36 numerical variables that the most highly correlated features are: 
+
+		<ul>
+			<li>Hotness vs. familiarity</li>
+			<li>Loudness vs. familiarity</li>
+			<li>Artist tag length vs. Artist familiarity </li>
+			<li>Artist tag length vs. Artist hotness</li>
+			<li>Pitch averages for the 12 segments</li>
+			<li>Timbre averages for the 12 segments</li>
+		</ul>
+	</p>
+
+	<h5 style="margin-left: 35%">Hotness & Familiarity</h5>
+	<div>
+	<p>This is perhaps the most obvious correlation. The more people who are familiar with an artist, the more hot (popular) they will be!	</p>
+
+	<p>
+		<img src="images/familiarity_vs_hotness.png" />
+		<br />From the summary of the linear regression model between artist hotness and artist familiarity, we can see that Artist Familiarity and Hotness are positively correlated.  This is reasonable to assume as listeners are generally more familiar with ‘hot’ artists.
+	</p>
+
+	<p>
+		$\hat{hotness} = 0.742 \cdot \textrm{familiarity} - 0.027$
+		<br />
+		${r^2}_{familiarity, hotness} = 0.6623$
+	</p>
+
+	<br />
+
+	<h5 style="margin-left: 35%">Loudness & Familiarity</h5>
+
+	<p>
+		<img src="images/loudness_vs_familiarity.png" />This plot suggests a positive correlation between loudness and hotness, i.e that as “loudness” increases, so does hotness. This is an interesting result since this associates louder songs with higher popularity amongst listeners.
+		<br /> 
+	</p>
+
+	<p>
+		$\hat{familiarity} = 0.006 \cdot \textrm{loudness} + 0.693$
+		<br />
+		${r^2}_{loudness, familiarity} = 0.05582$
+	</p>
+
+
+	<h5 style="margin-left: 35%">Tag & Hotness</h5>
+	<p>
+	<img src="images/tags_vs_hotness.png" />
+	<br />From the regression we see a slightly positive association between number of tags and artist hotness but it hard to make conclusions from these two variables, especially considering the inconsistent data for artist tags.
+We tried to make observations on how increasing the number of tags would increase the artists hotness. Since the number of tags over the decades is increasing, this may explain the trend.
+	</p>
+
+	<p>
+		$\hat{hotness} = 0.299 \cdot \textrm{tags} + 0.428$
+		<br />
+		${r^2}_{tags, hotness} = 0.2089$
+	</p>
+
+
+	<h5 style="margin-left: 35%">Tags & Decade</h5>
+	<p>
+	<img src="images/tags_vs_decades.png" />
+	<br />The numbers of tags over the decades has seen a general increase. This is very likely a result of feasibility; new technology, especially in terms of information storage and the digitization of music, has placed more importance in music being properly tagged, labeled, and stored. This is especially true for the selling of music. Furthermore, this could also be a result of increased musical experimentation and greater exposure to this experimental music to the masses. As new genres gain more exposure, it becomes increasingly important to be able to identify the “sound” concisely.
+	</p>
+
+	<h5 style="margin-left: 35%">Hotness & Decade</h5>
+	<p>
+	<img src="images/years_vs_hotness.png" />
+	<br />The plot above offers an interesting insight into how artists are recognized and heard by consumers. There is a very high density of “artist hotness” around the line y=0.4 and we can see that this trend follows all the way from the start of the timeline to the end of the timeline. What this suggests is that artists considered “hot” are about as popular in each of their respective decades. However, we do see that as time goes on the variance of the data points increases significantly. This increasing deviation, especially around the turn of the 2nd millenium, could be explained the increasing number of ways artists are able to broaden their audiences and self-advertise more easily and effectively, especially through the internet. Furthermore, this also suggests a change in attitude toward music and other forms of media, where “sharing” and “socializing” has become the norm. 
+	</p>
+
+
+	<h5 style="margin-left: 35%">Familiarity & Decade</h5>
+	<p>
+	<img src="images/years_vs_familiarity.png" />
+	<br />Artists Familiarity : We can see an increase in variance and a slight increase in familiarity over decades.  As digital music and the internet became more viable options, it became easier to access and share music.  In addition, marketing and media consumption has also increased leading to an audience hungry for more media.  We can attribute this higher variance to the increased consumption of music.  However, there is not a sharp increase in familiarity because of the competitive nature of the music industry and splintering of genres.  
+	</p>
+
+	<h5 style="margin-left: 35%">Name Length & Year</h5>
+	<p>
+		<img src="images/years_vs_name_length.png" />
+		<br />This graph displays a slightly downward trend in artist name length over the years. However, as with the “artist hotness” data, there is also an increase in variance are time progresses.   
+We see that artists in the later decades were more experimental in trying out long names due to the increase in artists use of stage names.
+	</p>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-light-gray inner">
+	<br />
+	<br />
+	<br />
+	<h3>Linear Regression Models for Year Prediction: Ridge & LASSO</h3>
+
+	<p>We have a wealth of data to work with in building our models that can quickly become complex, so we start off with a simple linear regression model using the 12 timbre segments features in the UCI dataset to predict year.
+	</p>
+
+	<p>Most people are familiar with the 2D 
+	</p>
+	
+	<p>
+		<img src="images/timbre12_ridge_coefficient_path_vs_lambda.png" />
+	</p>
+
+	<p>
+		<img src="images/timbre12_ridge_coefficient_path_vs_degree_of_freedom_lambda.png" />
+	</p>
+
+	<p>
+		<img src="images/timbre12_lasso_coefficient_path_vs_lambda.png" />
+	</p>
+
+	<p>
+		<img src="images/timbre12_lasso_coefficient_path_vs_degree_of_freedom_lambda.png" />
+	</p>
+
+	<p>
+		<img src="images/lasso_36.png" />
+	</p>	
+
+	<p>
+		<img src="images/ridge_36.png" />
+	</p>
+
+
+	<br />
+	<h3>Comparison with Classic Model: kNN</h3>
+
+	<p>
+		<img src="http://i.imgur.com/hxs4msW.gif"/>
+	</p>
+	
+    </section>
+
+    <!-- Team Section -->
+
+    <!-- <a href="http://imgur.com/KPtGhWE"><img src="http://i.imgur.com/KPtGhWE.gif" title="source: imgur.com" /></a> -->
+    <section id="team" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Our Amazing Team</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
+                        <h4>name: shypotato</h4>
+                        <p class="text-muted">Title 1</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
+                        <h4>name: shypotato</h4>
+                        <p class="text-muted">Title 2</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
+                        <h4>name: shypotato</h4>
+                        <p class="text-muted">Title 3</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+<!--                    <p class="large text-muted">
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$</p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Aside -->
+    <aside class="clients">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="img/logos/envato.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Join the Data Science community at UCSD today!</h2>
+<!--                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
+                </div>
+            </div>
+<!--            <div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-xl">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div> -->
+        </div>
+    </section>
+</div>
+
+ <!--   <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Your Website 2014</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2>Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-responsive img-centered" src="img/portfolio/roundicons-free.png" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <p>
+                                <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
+                            <ul class="list-inline">
+                                <li>Date: July 2014</li>
+                                <li>Client: Round Icons</li>
+                                <li>Category: Graphic Design</li>
+                            </ul>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 2 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Heading</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-responsive img-centered" src="img/portfolio/startup-framework-preview.png" alt="">
+                            <p><a href="http://designmodo.com/startup/?u=787">Startup Framework</a> is a website builder for professionals. Startup Framework contains components and complex blocks (PSD+HTML Bootstrap themes and templates) which can easily be integrated into almost any design. All of these components are made in the same style, and can easily be integrated into projects, allowing you to create hundreds of solutions for your future projects.</p>
+                            <p>You can preview Startup Framework <a href="http://designmodo.com/startup/?u=787">here</a>.</p>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 3 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2>Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-responsive img-centered" src="img/portfolio/treehouse-preview.png" alt="">
+                            <p>Treehouse is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. This is bright and spacious design perfect for people or startup companies looking to showcase their apps or other projects.</p>
+                            <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/treehouse-free-psd-web-template/">FreebiesXpress.com</a>.</p>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 4 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2>Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-responsive img-centered" src="img/portfolio/golden-preview.png" alt="">
+                            <p>Start Bootstrap's Agency theme is based on Golden, a free PSD website template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Golden is a modern and clean one page web template that was made exclusively for Best PSD Freebies. This template has a great portfolio, timeline, and meet your team sections that can be easily modified to fit your needs.</p>
+                            <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/golden-free-one-page-web-template/">FreebiesXpress.com</a>.</p>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 5 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2>Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-responsive img-centered" src="img/portfolio/escape-preview.png" alt="">
+                            <p>Escape is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Escape is a one page web template that was designed with agencies in mind. This template is ideal for those looking for a simple one page solution to describe your business and offer your services.</p>
+                            <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/escape-one-page-psd-web-template/">FreebiesXpress.com</a>.</p>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 6 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2>Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-responsive img-centered" src="img/portfolio/dreams-preview.png" alt="">
+                            <p>Dreams is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Dreams is a modern one page web template designed for almost any purpose. It’s a beautiful template that’s designed with the Bootstrap framework in mind.</p>
+                            <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/dreams-free-one-page-web-template/">FreebiesXpress.com</a>.</p>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>
