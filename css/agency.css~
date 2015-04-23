@@ -11,6 +11,7 @@ body {
 
 .text-muted {
     color: #777;
+    text-align: none
 }
 
 .text-primary {
@@ -61,7 +62,7 @@ h6 {
 }
 
 .bg-light-gray {
-    background-color: #f7f7f7;
+    background-color: #F2F2F2;// #f7f7f7;
 }
 
 .bg-darkest-gray {

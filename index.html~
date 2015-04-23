@@ -272,6 +272,15 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 	   and testing is required.
 	</p>
 
+	<p>And a final note about studying the distribution of any given data in general, on these kinds of tough questions it is often a good strategy to seek help from field experts, ask questions about possible sources the data originated from, as well listen to words of wisdom handed down by a more experienced Data Science mentor, for example in particular, a friend named Emanuele who is an alumnus of UCSD has kindly imparted to us, in regards to the Million Song Dataset, some helpful advice:</p>
+
+	<blockquote>
+		<p>"Sometimes the distribution can be an artefact of the selection process and not purely randomly selected"</p>
+  		<p>
+			<small>Emanuele Coviello, Co Founder at <a href="https://www.linkedin.com/company/keevio">Keevio Inc.</a></small>
+		</p>
+	</blockquote>
+
 	<br />
 	<h3>Temporal Data</h3>
 	<p>Although we understand that comparing the other feature variables over time neither qualifies it as univariate analysis nor specifically a time series analysis, it still made a huge difference that we decided to proceed and visualize it for the sake of discovering any possible insights. Some of the more interesting relationships are captured in the below super scatter-boxplot-lineplot graphs. By "interesting," we define the term by saying that the blue line plot which connects the means of the values every two years is not too flat and horizontal. Each possesses an interesting historical context in the past.</p>
@@ -439,7 +448,7 @@ We see that artists in the later decades were more experimental in trying out lo
 	</p>
 
 	<p>
-		The regression aspect refers to our goal in predicting year values -- a continuous numerical value. And to make sure that our predictions for year values are good, we introduce another function, called a "loss", that gives us a sense of the holistic error value of our model. The typical and well known loss function is the infinitely differentiable squared error:
+		The regression aspect refers to our goal in predicting year values -- a continuous numerical value. And to make sure that our predictions for year values are good, we introduce another function, called a "loss", that gives us a sense of the holistic error value of our model. A typical and well known loss function is the infinitely differentiable squared error:
 		$$(f(X) - y)^2$$ where $y$ is the training label (in our case the year of the song).
 	</p>
 
@@ -472,7 +481,10 @@ We see that artists in the later decades were more experimental in trying out lo
 	</p>
 
 	<h5 style="margin-left: 35%">Ordinary Least Squares</h5>
-	<p> Since the last 51,630 examples of the UCI dataset were set apart for testing, we used randomly selected 20% of the 463,715 training data points to be used as cross-validation on a task further on and the rest of the 80% as training data. Using R's <tt>lm</tt> command for linear models, we obtained a training error of $MSE_{train}(OLS) = 100.7227$ and a testing error of $MSE_{test}(OLS) = 100.1526$, which can be interpreted to say that the average residual is approximately 10 years, since the $MSE$ has units in terms of squared years. A residual plot below visualizes the distribution of the errors between predicted and actual years on the training set, with respect to our OLS model colored in blue. And it looks like most of the residuals are distributed between the mid 1980s to 2000s, which is reasonable since our pie chart that we created in the explore section showed that the proportion of songs of those decades to account for roughly 90% of the training sample.
+	<p> Since the last 51,630 examples of the UCI dataset were set apart for testing, we used randomly selected 20% of the 463,715 training data points to be used as cross-validation on a task further on and the rest of the 80% as training data. Using R's <tt>lm</tt> command for linear models, we obtained a training error of $$MSE_{train}(OLS) = 100.7227$$
+and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted to say that the average residual is approximately 10 years, since the $MSE$ has units in terms of squared years. For those who are new to $MSE$, it's very simply the $RSS$ divided by the number of data points we have $n$ to give us a sense of how good our predictions are.
+	</p>
+	<p> A residual plot below visualizes the distribution of the errors between predicted and actual years on the training set, with respect to our OLS model colored in blue. And it looks like most of the residuals are distributed between the mid 1980s to 2000s, which is reasonable since our pie chart that we created in the explore section showed that the proportion of songs of those decades account for roughly 90% of the training sample.
 	</p>
 
 	<p>
@@ -480,12 +492,14 @@ We see that artists in the later decades were more experimental in trying out lo
 	</p>
 
 
-	<p>We have now finished developing our first linear regression model: Ordinary Least Squares! And the training error surprisingly has a lower error than training, so everything seems good so far right? Not yet because there's room for improvement! The OLS model has a reputation of being a "high variance" learner, which is a nice way to say that it has a habit of overfitting the training data and not being able to generalize well to newer and unseen data down the line. We'll try two more linear regression models that we hope will increase the accuracy of our predictions.
+	<p>We have now finished developing our first linear regression model: Ordinary Least Squares! And the training error surprisingly has a lower error than training, so everything seems good so far right? Not yet because there's might be still room for improvement!
+	</p>
+	<p>The OLS model has a reputation of being a "high variance" learner, which is a nice way to say that it has a habit of overfitting the training data and not being able to generalize well to newer and unseen data down the line. We'll try two more linear regression models that we hope will increase the accuracy of our predictions.
 	</p>
 
 	<h5 style="margin-left: 35%">Ridge Regression</h5>
 
-	<p>In the effort to combat overfitting, we proceed to incorporate an extra "tuning" parameter $\lambda$ into our model, which we find in the cross-validation stage to obtain a "penalty" function $\mathcal{R}(\lambda, \beta)$ to help regularlzie and add onto the original loss function from OLS to obtain a new minimization objective:
+	<p>In the effort to combat overfitting, we proceed to incorporate an extra "tuning" parameter $\lambda$ into our model, which we find in the cross-validation stage to obtain a "penalty" function $\mathcal{R}(\lambda, \beta)$ to help regularize and add onto the original loss function from OLS and obtain a new minimization objective:
 
 		$$\hat{\beta} = \underset{\beta}{\arg\min} \big\{ {{\|\hat{y} - y\|}_2}^2 + \lambda {{\|\beta\|}_2}^2 \big\}$$
 
@@ -497,7 +511,7 @@ We see that artists in the later decades were more experimental in trying out lo
 	</p>
 
 	<p>
-		The cross-validation plot above was brought to you by the help of Mr. Tibshirani the younger (Ryan, son of Robert who is a coauthor of the ESL book) and his great online resources (lecture slides and accompanying R code for linear regression) from his <a href="http://www.stat.cmu.edu/~ryantibs/datamining/">Stanford data mining class</a>. In lecture 17, he explains the concept of degree of freedom ($df$) to estimate the number of effective parameters to use in our model. By plotting the coefficient path of Ridge regression and intersecting it with $df(\lambda)$ since  we found $\lambda$ in the cross-validation stage, we see that nearly all the 12 timbre segments are useful predictors in our regression task. Since little shrinking of coefficients was accomplished given our $\lambda$, the $MSE_{test}(Ridge) = 100.1542$ is close to $MSE_{test}(OLS) = 100.1526$ without much notable difference.
+		The cross-validation plot above was brought to you by the wisdom of Mr. Tibshirani the younger (Ryan, son of Robert who is a coauthor of the ESL book) and his great online resources (lecture slides and accompanying R code for linear regression) from his <a href="http://www.stat.cmu.edu/~ryantibs/datamining/">Stanford data mining class</a>. In lecture 17, he explains the concept of degree of freedom ($df$) to estimate the number of effective parameters to use in our model. By plotting the coefficient path of Ridge regression and intersecting it with $df(\lambda)$ since  we found $\lambda$ in the cross-validation stage, we see that nearly all the 12 timbre segments are useful predictors in our regression task. Since little shrinking of coefficients was accomplished given our $\lambda$, the $MSE_{test}(Ridge) = 100.1542$ is close to $MSE_{test}(OLS) = 100.1526$ without much notable difference.
 		<br />
 		<br />
 		<img src="images/lr_cv_ridge_coefficient_path_vs_degree_of_freedom_lambda.png" />
@@ -521,7 +535,7 @@ We see that artists in the later decades were more experimental in trying out lo
 		<img src="images/lr_cv_lasso_coefficient_path_vs_shrinkage_factor.png" />
 	</p>
 
-	<h5 style="margin-left: 10%" >Q6: Are some predictor variables be more or less than effective others?</h5>
+	<h5 style="margin-left: 10%" >Q6: Can predictor variables, even if they are all considered effective, be more or less effective than compared to each other?</h5>
 
 	<p>Based on this observation and plotting the timbre segment values over the decades, we see that loudness is consistently increasing, b6 and flatness are consistently decreasing, and brightness alternates. The other timbre segments appear to be almost the same across time. Although the tuning/regularlization parameter $\lambda$ found in cross-validation and the coefficient plots with $df(\lambda)$ show that all 12 timbre segments are effective predictors, is there something special about the loudness, b6, brightness and flatness features in particular?
 		<br />
@@ -533,19 +547,38 @@ We see that artists in the later decades were more experimental in trying out lo
 	<br />
 	<h3>Comparison with Classic Model: k-NN Regression</h3>
 
-	<p>When looking over the <a href="https://www.ee.columbia.edu/~dpwe/pubs/BertEWL11-msd.pdf">original research paper</a> describing the Million Song Dataset, there's an interesting section in 4.2 near the end explaining how the first benchmarked model used is the simple, classic, and non-parametric k-nearest neighbors algorithm. In UCSD, the CSE department's currently best undergraduate machine learning class  is<a href="http://cseweb.ucsd.edu/~kamalika/#teaching">Introduction to AI: A Statistical Approach</a>, and students are sometimes introduced to k-NN as their first algorithm encountered and also use it on the very famous Iris flower dataset for classification. For the song dataset we're working with however, we will use k-NN for regression by averaging the year labels of the k closest data points under Euclidian distance metric. With the power of sci-kit learn in Python, k-NN training on our 
-
+	<p>When looking over the <a href="https://www.ee.columbia.edu/~dpwe/pubs/BertEWL11-msd.pdf">original research paper</a> describing the Million Song Dataset, there's an interesting section in 4.2 near the end explaining how the first benchmarked model used is the simple, classic, and non-parametric k-nearest neighbors algorithm. At UCSD, the CSE department's foundational undergraduate machine learning algorithm class  is <a href="http://cseweb.ucsd.edu/~kamalika/#teaching">Introduction to AI: A Statistical Approach</a>, and students are sometimes introduced to k-NN as their first algorithm encountered and also use it on the very famous Iris flower dataset for classification. For the song dataset we're working with however, we will use k-NN for regression by averaging the year labels of the k closest data points under Euclidian distance metric. With the power of sci-kit learn in Python, k-NN training on our 370,972 data points which took around 20 minutes (possibly because the training complexity is $O(N^2)$ without using optimizing structures or hashing techniques so that we are looking at $370972^2 \approx 137 \textrm{ billion}$ data points, although we can examine more in depth <a href="https://github.com/scikit-learn/scikit-learn/blob/bb39b49/sklearn/neighbors/regression.py#L19">its implementation</a> at another point in time).
 	</p>
 
 	<p>
 		<img src="images/knn_scree.png" />
 	</p>
 
-
-	<p>
-		<img src="http://i.imgur.com/hxs4msW.gif"/>
+	<p>The $MSE$ values on the cross-validation set however were more informative and showed a decreasing trend as the number of neighbors $k$ increased by intervals of 10. Again, the majority of the $MSE$ values with exception to $k = 1$ are around $100 \textrm{ year}^2 \approx 10 \textrm{ year}$ as found by our linear regression models. Since the elbow in the Scree plot above is located at $k = 10$, we choose to use that as our optimal number of neighbors on the testing set instead of the larger values of $k$, which have less $MSE$ but do not possess much difference in error value past the knee point. With 10 neighbors, the testing error on our k-NN regression model is $MSE_{test}(kNN) = 106.7306 \textrm{ year}^2 \approx 10.33 \textrm{ year}$ which is not far from the 10.20 value reported in Table 5 of the Million Song Dataset paper using 50 neighbors. Our ordinary least squares linear regression model has a small victory of around 0.33 years less error on average, and it's also much faster to train!
 	</p>
 	
+	<br />
+	<br />
+
+	<h3>Experimenting and Combining Models</h3>
+	<p>As with any other respectable and established discipline, a huge aspect of the Data Science process is teamwork. We no longer live in isolated environments but instead interact in large social networks to share knowledge and responsibility effectively.
+	</p>
+
+
+	<blockquote>
+		<p>"Data science is a team sport, and we can't do this without you"</p>
+		<p><small>DJ Patil, Chief Data Scientist of the United States Office of Science and Technology Policy </small></p>
+	</blockquote>
+
+	<p>To conclude our presentation, we intend to reflect this theme of teamwork by creating a visual model that combines the efforts and findings from linear regression (the three interesting timbre segments: loudness, b6 and flatness) and the results from k-nearest neighbors regression on the testing set.
+	</p>
+	<p>A fleeting observation from this plot brings to light a possible separation boundary for 2000s and 1990s songs when $b6 \approx -40$, and possibly more observations can be drawn simply because we've decided to try and see the data in a novel way. New ideas can be created by seeing and visualizing from different perspectives, and we're curious to hear: what's yours?
+	</p>
+
+	<p>
+		<img src="http://i.imgur.com/jH0Rg3U.gif" title="source: imgur.com"/>
+	</p>
+
     </section>
 
     <!-- Team Section -->
@@ -556,56 +589,194 @@ We see that artists in the later decades were more experimental in trying out lo
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Meet the $A^*$ Team!</h2>
-                    <h3 class="section-subheading text-muted">UCSD Data Scientist and Analysts of the Future</h3>
+                    <h3 class="section-subheading text-muted">The UCSD Data Scientist and Analysts of the Future</h3>
                 </div>
             </div>
+
+            <div class="row">
+		<div class="col-md-6">
+                    <div class="team-member">
+                        <h4>Vicente Malave</h4>
+                        <p class="text-muted">Machine Learning PhD<br />
+					      Musicology Domain Expert<br />
+					      about: <a href="http://vicentemalave.com/">http://vicentemalave.com/</a>
+			</p>
+
+                        <ul class="list-inline social-buttons">
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li> -->
+                            <li><a href="https://www.linkedin.com/pub/vicente-malave/8/447/2a4"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+	       </div>
+
+
+		<div class="col-md-6">
+                    <div class="team-member">
+                        <h4>Emanuele Coviello</h4>
+                        <p class="text-muted">Machine Learning PhD<br />
+					      Co Founder at Keevio Inc.<br />
+			</p>
+
+                        <ul class="list-inline social-buttons">
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li> -->
+                            <li><a href="https://www.linkedin.com/company/keevio"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+	    	</div>
+	    </div>
+
+
             <div class="row">
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>name: shypotato</h4>
-                        <p class="text-muted">Title 1</p>
+                        <img src="https://pbs.twimg.com/profile_images/530482329622700037/LsMNkfUX_200x200.jpeg" class="img-responsive img-circle" alt="">
+                        <h4>Jasmine Wang</h4>
+                        <p class="text-muted">Cornell Graduate School Applicant<br />
+					      Tutor, Department of Mathematics at UCSD<br />
+                                              Math Major and Art Minor <br />
+					      Graduate Undergraduate Learning Program	
+			</p>
+
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li> -->
+                            <li><a href="https://www.linkedin.com/pub/xiaozhuo-wang/39/a73/b51"><i class="fa fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
-                        <h4>name: shypotato</h4>
-                        <p class="text-muted">Title 2</p>
+                        <img src="https://media.licdn.com/mpr/mpr/shrink_200_200/p/5/005/038/15b/084631d.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Sarah Ji</h4>
+                         <p class="text-muted">Biostatistics/Bioinformatics Research Project Assistant<br />
+					      Calculus Teaching Assistant & Lab Tutor<br />
+                                              Applied Math Major
+			</p>
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li> -->
+                            <li><a href="https://www.linkedin.com/pub/sarah-ji/89/821/242"><i class="fa fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>name: shypotato</h4>
-                        <p class="text-muted">Title 3</p>
+                        <img src="https://media.licdn.com/mpr/mpr/shrink_200_200/p/5/005/03d/19e/058a9fb.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Celina Chow</h4>
+                        <p class="text-muted">Economics-Business Candidate<br />
+					      TEDxUCSD Organizer<br />
+                                              VP of Internal, Data Science Student Society<br />
+					      Lead Logo Designer
+			</p>
+
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li> -->
+                            <li><a href="https://www.linkedin.com/in/celinachow"><i class="fa fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://media.licdn.com/mpr/mpr/shrink_200_200/p/7/005/0b1/394/1ed92d6.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Kevin Hung</h4>
+                        <p class="text-muted">Aspiring Data Analyst/SW Engineer<br />
+					      Director of Marketing, DS3 at UCSD<br />
+                                              Computer Science Major and Math Minor <br />
+			</p>
+
+                        <ul class="list-inline social-buttons">
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li> -->
+                            <li><a href="https://www.linkedin.com/in/kevin11h"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="images/team/joshy.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Joshua Wheeler</h4>
+                         <p class="text-muted">Technology Manager at <a href="http://ayearwithoutwar.org/">2020 A Year Without War</a><br />
+					      VP of Web Management & Technologies<br />
+                                              Computer Science Major
+			</p>
+                        <ul class="list-inline social-buttons">
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li> -->
+                            <li><a href="https://www.linkedin.com/pub/joshua-wheeler/52/3b0/207"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="images/team/potato.gif" class="img-responsive img-circle" title="http://imgur.com/gallery/KPtGhWE" alt="http://imgur.com/gallery/KPtGhWE">
+                        <h4>Alex Bautista</h4>
+                        <p class="text-muted">Mathematics-Economics Major<br />
+					      UCSD Catering<br />
+                                              San Diego Botanic Garden<br />
+			</p>
+
+                        <ul class="list-inline social-buttons">
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+	    <div class="row">
+		<div class="col-sm-4">
+                    <div class="team-member">
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="images/team/ryan.jpg" class="img-responsive img-circle">
+                        <h4>Ryan</h4>
+                    </div>
+
+
+		<div class="col-sm-4">
+                    <div class="team-member">
+                    </div>
+                </div>
+
+	    </div>
+
+
+
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
 <!--                    <p class="large text-muted">
