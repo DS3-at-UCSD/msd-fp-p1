@@ -272,6 +272,15 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 	   and testing is required.
 	</p>
 
+	<p>And a final note about studying the distribution of any given data in general, on these kinds of tough questions it is often a good strategy to seek help from field experts, ask questions about possible sources the data originated from, as well listen to words of wisdom handed down by a more experienced Data Science mentor, for example in particular, a friend named Emanuele who is an alumnus of UCSD has kindly imparted to us, in regards to the Million Song Dataset, some helpful advice:</p>
+
+	<blockquote>
+		<p>"Sometimes the distribution can be an artefact of the selection process and not purely randomly selected"</p>
+  		<p>
+			<small>Emanuele Coviello, Co Founder at <a href="https://www.linkedin.com/company/keevio">Keevio Inc.</a></small>
+		</p>
+	</blockquote>
+
 	<br />
 	<h3>Temporal Data</h3>
 	<p>Although we understand that comparing the other feature variables over time neither qualifies it as univariate analysis nor specifically a time series analysis, it still made a huge difference that we decided to proceed and visualize it for the sake of discovering any possible insights. Some of the more interesting relationships are captured in the below super scatter-boxplot-lineplot graphs. By "interesting," we define the term by saying that the blue line plot which connects the means of the values every two years is not too flat and horizontal. Each possesses an interesting historical context in the past.</p>
@@ -533,19 +542,29 @@ We see that artists in the later decades were more experimental in trying out lo
 	<br />
 	<h3>Comparison with Classic Model: k-NN Regression</h3>
 
-	<p>When looking over the <a href="https://www.ee.columbia.edu/~dpwe/pubs/BertEWL11-msd.pdf">original research paper</a> describing the Million Song Dataset, there's an interesting section in 4.2 near the end explaining how the first benchmarked model used is the simple, classic, and non-parametric k-nearest neighbors algorithm. In UCSD, the CSE department's currently best undergraduate machine learning algorithm class  is<a href="http://cseweb.ucsd.edu/~kamalika/#teaching">Introduction to AI: A Statistical Approach</a>, and students are sometimes introduced to k-NN as their first algorithm encountered and also use it on the very famous Iris flower dataset for classification. For the song dataset we're working with however, we will use k-NN for regression by averaging the year labels of the k closest data points under Euclidian distance metric. With the power of sci-kit learn in Python, k-NN training on our 370,972 data points which took roughly 20 minutes (
-
+	<p>When looking over the <a href="https://www.ee.columbia.edu/~dpwe/pubs/BertEWL11-msd.pdf">original research paper</a> describing the Million Song Dataset, there's an interesting section in 4.2 near the end explaining how the first benchmarked model used is the simple, classic, and non-parametric k-nearest neighbors algorithm. In UCSD, the CSE department's foundational undergraduate machine learning algorithm class  is <a href="http://cseweb.ucsd.edu/~kamalika/#teaching">Introduction to AI: A Statistical Approach</a>, and students are sometimes introduced to k-NN as their first algorithm encountered and also use it on the very famous Iris flower dataset for classification. For the song dataset we're working with however, we will use k-NN for regression by averaging the year labels of the k closest data points under Euclidian distance metric. With the power of sci-kit learn in Python, k-NN training on our 370,972 data points which took around 20 minutes (possibly because the training complexity is $O(N^2)$ without using enhanced structures so that we will be looking at $370972^2 \approx 137 \textrm{ billion}$ data points, although we can examine more in depth at another time on <a href="https://github.com/scikit-learn/scikit-learn/blob/bb39b49/sklearn/neighbors/regression.py#L19">its implementation</a>).
 	</p>
 
 	<p>
 		<img src="images/knn_scree.png" />
 	</p>
 
-
-	<p>
-		<img src="http://i.imgur.com/hxs4msW.gif"/>
+	<p>The $MSE$ values on the cross-validation set however were more informative and showed a decreasing trend as the number of neighbors $k$ increased by intervals of 10. Again, the majority of the $MSE$ values with exception to $k = 1$ are around $100 \textrm{ year}^2 \approx 10 \textrm{ year}$ as found by our linear regression models. Since the elbow in the Scree plot above is located at $k = 10$, we choose to use that as our optimal number of neighbors on the testing set even though larger values of $k$ have less $MSE$ since we could not see much signficant improvement past the knee point. With 10 neighbors, the testing error on our k-NN regression model is $MSE_{test}(kNN) = 106.7306 \textrm{ year}^2 \approx 10.33 \textrm{ year}$ which is not far from the 10.20 value reported in Table 5 of the Million Song Dataset paper using 50 neighbors. Our ordinary least squares linear regression model had a small victory of around 0.33 year less error on average, and it's also much faster to train!
 	</p>
 	
+	<h3>Experimenting and Combining Models</h3>
+	<p>As with any other respectable and effective discipline, a huge aspect of the Data Science process is teamwork. We no longer live in a world with lone unicorns b6 -40
+	</p>
+
+	<blockquote>
+		<p>"Data science is a team sport, and we can't do this without you"</p>
+		<p><small>DJ Patil, Chief Data Scientist of the United States Office of Science and Technology Policy </small></p>
+	</blockquote>
+
+
+	<p>
+		<img src="http://i.imgur.com/jH0Rg3U.gif" title="source: imgur.com"/>
+	</p>
     </section>
 
     <!-- Team Section -->
@@ -556,20 +575,20 @@ We see that artists in the later decades were more experimental in trying out lo
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Meet the $A^*$ Team!</h2>
-                    <h3 class="section-subheading text-muted">UCSD Data Scientist and Analysts of the Future</h3>
+                    <h3 class="section-subheading text-muted">The UCSD Data Scientist and Analysts of the Future</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>name: shypotato</h4>
+                        <h4>Jasmine Wang</h4>
                         <p class="text-muted">Title 1</p>
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
+                            </li> -->
                             <li><a href="#"><i class="fa fa-linkedin"></i></a>
                             </li>
                         </ul>
@@ -581,10 +600,10 @@ We see that artists in the later decades were more experimental in trying out lo
                         <h4>name: shypotato</h4>
                         <p class="text-muted">Title 2</p>
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
+                            </li> -->
                             <li><a href="#"><i class="fa fa-linkedin"></i></a>
                             </li>
                         </ul>
@@ -596,10 +615,10 @@ We see that artists in the later decades were more experimental in trying out lo
                         <h4>name: shypotato</h4>
                         <p class="text-muted">Title 3</p>
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
+                            </li> -->
                             <li><a href="#"><i class="fa fa-linkedin"></i></a>
                             </li>
                         </ul>
