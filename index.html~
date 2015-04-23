@@ -341,6 +341,9 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 		</ul>
 	</p>
 
+	<p>In the following sections we will propose descriptive as well as linear explanations of the variance in the response variables (y-axis) by finding the coefficient of determination $r^2$ and simple linear models in R.
+	</p>
+
 	<h5 style="margin-left: 35%">Hotness & Familiarity</h5>
 	<div>
 	<p>This is perhaps the most obvious correlation. The more people who are familiar with an artist, the more hot (popular) they will be!	</p>
@@ -437,7 +440,7 @@ We see that artists in the later decades were more experimental in trying out lo
 
 	<p>
 		The regression aspect refers to our goal in predicting year values -- a continuous numerical value. And to make sure that our predictions for year values are good, we introduce another function, called a "loss", that gives us a sense of the holistic error value of our model. The typical and well known loss function is the infinitely differentiable squared error:
-		$$f(X) - y$$ where $y$ is the training label (in our case the year of the song).
+		$$(f(X) - y)^2$$ where $y$ is the training label (in our case the year of the song).
 	</p>
 
 	<p>
@@ -469,10 +472,15 @@ We see that artists in the later decades were more experimental in trying out lo
 	</p>
 
 	<h5 style="margin-left: 35%">Ordinary Least Squares</h5>
-	<p> Since the last 51,630 examples of the UCI dataset were set apart for testing, we used randomly selected 20% of the 463,715 training data points to be used as cross-validation on a task further on and the rest of the 80% as training data. Using R's <tt>lm</tt> command for linear models, we obtained a training error of $MSE_{train}(OLS) = 100.7227$ and a testing error of $MSE_{test}(OLS) = 100.1526$, which can be interpreted to say that the average residual is approximately 10 years, since the $MSE$ have units in terms of squared years.
+	<p> Since the last 51,630 examples of the UCI dataset were set apart for testing, we used randomly selected 20% of the 463,715 training data points to be used as cross-validation on a task further on and the rest of the 80% as training data. Using R's <tt>lm</tt> command for linear models, we obtained a training error of $MSE_{train}(OLS) = 100.7227$ and a testing error of $MSE_{test}(OLS) = 100.1526$, which can be interpreted to say that the average residual is approximately 10 years, since the $MSE$ has units in terms of squared years. A residual plot below visualizes the distribution of the errors between predicted and actual years on the training set, with respect to our OLS model colored in blue. And it looks like most of the residuals are distributed between the mid 1980s to 2000s, which is reasonable since our pie chart that we created in the explore section showed that the proportion of songs of those decades to account for roughly 90% of the training sample.
 	</p>
 
-	<p>We now have the solution to our first linear regression model: Ordinary Least Squares! And the training error surprisingly has a lower error than training, so everything seems good so far right? Not yet because there's room for improvement! The OLS model has a reputation of being a "high variance" learner, which is a nice way to say that it has a habit of overfitting the training data and not being able to generalize well to newer and unseen data down the line. We'll try two more linear regression models that we hope will increase the accuracy of our predictions.
+	<p>
+		<img src="images/ols_res_plot.png" />
+	</p>
+
+
+	<p>We have now finished developing our first linear regression model: Ordinary Least Squares! And the training error surprisingly has a lower error than training, so everything seems good so far right? Not yet because there's room for improvement! The OLS model has a reputation of being a "high variance" learner, which is a nice way to say that it has a habit of overfitting the training data and not being able to generalize well to newer and unseen data down the line. We'll try two more linear regression models that we hope will increase the accuracy of our predictions.
 	</p>
 
 	<h5 style="margin-left: 35%">Ridge Regression</h5>
@@ -484,31 +492,50 @@ We see that artists in the later decades were more experimental in trying out lo
 	</p>
 	<p>Running cross-validation on the randomly selected 20% of the training set, we see in the below plot that $\lambda_{min} = 740$, although the $MSE$ values for both OLS and Ridge are close to $101 \textrm{ year}^2 \approx 10 \textrm{ years}$.
 		<br />
-		
+		<br />
 		<img src="images/lr_cv_err_ridge.png" />
 	</p>
 
 	<p>
+		The cross-validation plot above was brought to you by the help of Mr. Tibshirani the younger (Ryan, son of Robert who is a coauthor of the ESL book) and his great online resources (lecture slides and accompanying R code for linear regression) from his <a href="http://www.stat.cmu.edu/~ryantibs/datamining/">Stanford data mining class</a>. In lecture 17, he explains the concept of degree of freedom ($df$) to estimate the number of effective parameters to use in our model. By plotting the coefficient path of Ridge regression and intersecting it with $df(\lambda)$ since  we found $\lambda$ in the cross-validation stage, we see that nearly all the 12 timbre segments are useful predictors in our regression task. Since little shrinking of coefficients was accomplished given our $\lambda$, the $MSE_{test}(Ridge) = 100.1542$ is close to $MSE_{test}(OLS) = 100.1526$ without much notable difference.
+		<br />
+		<br />
 		<img src="images/lr_cv_ridge_coefficient_path_vs_degree_of_freedom_lambda.png" />
 	</p>
 
-	<p>
+		<h5 style="margin-left: 15%">The LASSO: Least Absolute Selection and Shrinkage Operator</h5>
+
+	<p>We attempt LASSO as another option to improve the $MSE$ for our linear regression models with the LASSO variant by changing the penalty function to use the $\ell$-1 norm:
+
+		$$\hat{\beta} = \underset{\beta}{\arg\min} \big\{ {{\|\hat{y} - y\|}_2}^2 + \lambda {{\|\beta\|}_1} \big\}$$
+
+	</p>
+	<p>Applying similar cross-validation steps as the ridge and using the <tt>lars</tt> package in R, it's possible there may have been a mistake as the plot below shows no improvement at all in terms of $MSE$ when applying LASSO. The OLS error is still better and as a result $\lambda = 0$.
 		<img src="images/lr_cv_err_lasso.png" />
 	</p>
 
 
-	<p>
+	<p>The following plot confirms the cross-validation error described above in that no coefficients are shrunk since $\lambda = 0$ and that OLS is preferred. What is noticable in both coefficient plots for Ridge and LASSO however is that out of the 12 timbre segments features, the loudness, b6, brightness and flatness seems to be the last ones shrunk as $df \rightarrow 0$.
+		<br />
+		<br />
 		<img src="images/lr_cv_lasso_coefficient_path_vs_shrinkage_factor.png" />
-	</p>	
-
-	<p>
-		<img src="images/ols_res_plot.png" />
 	</p>
 
+	<h5 style="margin-left: 10%" >Q6: Are some predictor variables be more or less than effective others?</h5>
 
+	<p>Based on this observation and plotting the timbre segment values over the decades, we see that loudness is consistently increasing, b6 and flatness are consistently decreasing, and brightness alternates. The other timbre segments appear to be almost the same across time. Although the tuning/regularlization parameter $\lambda$ found in cross-validation and the coefficient plots with $df(\lambda)$ show that all 12 timbre segments are effective predictors, is there something special about the loudness, b6, brightness and flatness features in particular?
+		<br />
+		<br />
+		<img src="images/timbre_segment_values_over_the_years.png"></img>
+	</p>
 
+	
 	<br />
 	<h3>Comparison with Classic Model: k-NN Regression</h3>
+
+	<p>When looking over the <a href="https://www.ee.columbia.edu/~dpwe/pubs/BertEWL11-msd.pdf">original research paper</a> describing the Million Song Dataset, there's an interesting section in 4.2 near the end explaining how the first benchmarked model used is the simple, classic, and non-parametric k-nearest neighbors algorithm. In UCSD, the CSE department's currently best undergraduate machine learning class  is<a href="http://cseweb.ucsd.edu/~kamalika/#teaching">Introduction to AI: A Statistical Approach</a>, and students are sometimes introduced to k-NN as their first algorithm encountered and also use it on the very famous Iris flower dataset for classification. For the song dataset we're working with however, we will use k-NN for regression by averaging the year labels of the k closest data points under Euclidian distance metric. With the power of sci-kit learn in Python, k-NN training on our 
+
+	</p>
 
 	<p>
 		<img src="images/knn_scree.png" />
@@ -528,8 +555,8 @@ We see that artists in the later decades were more experimental in trying out lo
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading">Meet the $A^*$ Team!</h2>
+                    <h3 class="section-subheading text-muted">UCSD Data Scientist and Analysts of the Future</h3>
                 </div>
             </div>
             <div class="row">
