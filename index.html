@@ -92,7 +92,7 @@
                 <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>-->
 	        <h1 id="project_title">The Million Song Dataset:</h1>
                 <h2 id="project_tagline">An Exploratory Analysis and Year Predictive Model</h2>
-		<h2 id="project_tagline" style="margin-left: -15%">Presented on behalf of the</h2>
+		<h2 id="project_tagline">Presented on behalf of the</h2>
           	<a href="http://ds3.ucsd.edu">
 	        	<img width="413" height="153" style="display: block; margin-left: auto; margin-right: auto" src="images/DS3-Logo.png"></img>
 		</a>
@@ -159,7 +159,7 @@ models are designed to implicitly learn the structure or probability distributio
 	</p>
 
 	<p>
-		<img src="images/cd.png" height=400 width=400></img>
+		<img src="images/cd.png" /> <!-- height=400 width=400></img>-->
 	</p>
 
 	<br />
@@ -185,20 +185,20 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 	<p>That great man inspired and reminded us that we need to closely study the year information of our dataset to a degree so that we can develop a useful, but not necessarily correct, year prediction model for it. Also, his namesake happens to be another great reminder of how we can visualize outliers in our year data too with the Box-and-Whisker plot below.
 	</p>
 
-	<img src="images/box.png" height=350px width=240px style="display: inline; float: left"></img>
-	<img src="images/yr_numerical_summary.png" height=350px style="display: inline; float: right"></img>
+	<img src="images/box.png" /> <!--height=350px width=240px style="display: inline; float: left"></img>-->
+	<img src="images/yr_numerical_summary.png" /> <!-- height=350px style="display: inline; float: right"></img>-->
 
 	<p style="clear: both">What we can clearly see is that the central mass between the 1st and 3rd quartiles lies in years ranging from the mid 1990s to the mid 2000s. We also computed the proportion of songs from 1922 to 1976 and found that they only represent a small fraction of our sample -- 5%!  Other summary statistics on year we calculated are tabularized using R's fancy stargazer package located to the right of the boxplot.
 	</p>
 
 	<p>
-		<img src="images/hist_w_max.png"></img>
+		<img src="images/hist_w_max.png" /><!--</img>-->
 	</p>
 
 	<p>In the above density plot, when we drop the outliers pre-1976, around the time of the introduction of the CD, we still wonder at what kind of distribution it represents and whether it is normal or not. What we do know is that, given the moment values calculated by R that there is a slight negative (left) skew and that it is super peaky, nearly twice or more so than the 3.0 kurtosis value of a normal distribution!
 	<br />
 	<br />
-	<img src="images/yrs_moments.png"></img>
+	<img src="images/yrs_moments.png" /><!--</img>-->
 	</p>
 
 	<h5 style="margin-left: 25%" >Q2: Why is the peak song count at year 2007?</h5>
@@ -208,7 +208,7 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 
 	<p>As a team, we looked over the history of music recording hardware and found that 2007 is the year that the 1st Generation iPhone got released, but whether that is a signficant contributing factor remains another question to be investigated. And why is their a sudden decline after 2007? Is it related to how the data was processed and gathered? Can another factor like economic climate for music industry sales records be a better explanation than the actual hardware?
 
-		<img src="images/1stgeniphone.jpg"></img>
+		<img src="images/1stgeniphone.jpg" /><!--</img>-->
 	</p>
 
 	<h5 style="margin-left: 15%">Q3: If the song count distribution is not normal, what is it?</h5>
@@ -233,11 +233,11 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 	<p>
 		<ol>
 			<li>First we have the absolute counts of the song divied up by every two years</li>
-			<img src="images/biennial_count.png"></img>
+			<img src="images/biennial_count.png" />
 		<br />
 			<li>Next we logarithmize Y-axis by 2 and plot a regression line</li>
 
-			<img src="images/biennial_log2.png"></img>
+			<img src="images/biennial_log2.png" />
 		
 		<br />
 			<li>Finally we summarized the regression by calculating the correlation (using with a 95% confidence interval)</li>
@@ -275,7 +275,7 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 	<p>And a final note about studying the distribution of any given data in general, on these kinds of tough questions it is often a good strategy to seek help from field experts, ask questions about possible sources the data originated from, as well listen to words of wisdom handed down by a more experienced Data Science mentor, for example in particular, a friend named Emanuele who is an alumnus of UCSD has kindly imparted to us, in regards to the Million Song Dataset, some helpful advice:</p>
 
 	<blockquote>
-		<p>"Sometimes the distribution can be an artefact of the selection process and not purely randomly selected"</p>
+		<p>"Be careful about drawing general conclusions about music from this specific exercise. The Million Song Dataset is not necessary a random sample of all the music out there, and through time. As a consequence, some of the observations you made may be an artifact of the specific way that dataset was built."</p>
   		<p>
 			<small>Emanuele Coviello, Co Founder at <a href="https://www.linkedin.com/company/keevio">Keevio Inc.</a></small>
 		</p>
@@ -288,7 +288,7 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 	<h5 style="margin-left: 35%" >Loudness Wars</h5>
 
 	<p>The increase of music loudness over time is basically a result of the economic principle of competition, everyone is trying to get their voices heard! 
-		<img src="images/yr_vs_loudness.png" height=500px width=500px />
+		<img src="images/yr_vs_loudness.png" /> <!--height=500px width=500px />-->
 	</p>
 
 	<blockquote>
@@ -303,7 +303,7 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 
 	<h5 style="margin-left: 35%">Disco in the 70s</h5>
 	<p>It is hard to draw conclusions from this because of the high variance, but we can see the general tempo increasing and peaking until the 70s (Disco music) where it stays fairly constant.  One thing we can gather from the higher variance is that now people can easily find something matching their preference or current mood so all types of music lovers are satisfied. In the 1960s, the pop and rock R&B were slower in tempo than modern day.
-		<img src="images/yr_vs_tempo.png" height=500px width=500px />
+		<img src="images/yr_vs_tempo.png" /><!-- height=500px width=500px /-->
 	</p>
 
 	<p>
@@ -312,7 +312,7 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 
 
 	<h5 style="margin-left: 35%">Album Oriented Rock Format</h5>
-	<p>After a historic low around the late 1950’s, we see an increase (and maintenance) to longer song duration. This coincides with the rise of “album oriented rock” during the 1960’s and 1970’s, when radio DJ’s were given freedom to play long sets of songs and, consequently, gave rise to songs formats that weren’t necessarily created as “singles,” but rather were constructed with whole albums in mind. <img src="images/yr_vs_duration.png" height=500px width=500px />
+	<p>After a historic low around the late 1950’s, we see an increase (and maintenance) to longer song duration. This coincides with the rise of “album oriented rock” during the 1960’s and 1970’s, when radio DJ’s were given freedom to play long sets of songs and, consequently, gave rise to songs formats that weren’t necessarily created as “singles,” but rather were constructed with whole albums in mind. <img src="images/yr_vs_duration.png" /><!--height=500px width=500px /-->
 	</p>
 
 	
@@ -448,7 +448,7 @@ We see that artists in the later decades were more experimental in trying out lo
 	</p>
 
 	<p>
-		The regression aspect refers to our goal in predicting year values -- a continuous numerical value. And to make sure that our predictions for year values are good, we introduce another function, called a "loss", that gives us a sense of the holistic error value of our model. A typical and well known loss function is the infinitely differentiable squared error:
+		The regression aspect refers to our goal in predicting year values -- a continuous numerical value. And to make sure that our predictions for year values are good, we introduce another function $\mathcal{L}(X, \beta, y)$, called a "loss", that gives us a sense of the holistic error value of our model. A typical and well known loss function is the infinitely differentiable squared error:
 		$$(f(X) - y)^2$$ where $y$ is the training label (in our case the year of the song).
 	</p>
 
@@ -477,7 +477,7 @@ We see that artists in the later decades were more experimental in trying out lo
 			\hat{\beta} &= (X^TX)^{-1}X^{T} y
 		\end{align}$$
 		
-	   Assuming that $X^{T}X$ is nonsingular and invertible, otherwise try differentiation on $RSS$ (a good source of reference on Linear Regression is provided in Chapter 3 of <a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The Elements of Statistical Learning</a> by Hastie, Tibshirani and Friedman).
+	   Assuming that $X^{T}X$ is nonsingular and invertible (a good source of reference on Linear Regression is provided in Chapter 3 of <a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The Elements of Statistical Learning</a> by Hastie, Tibshirani and Friedman).
 	</p>
 
 	<h5 style="margin-left: 35%">Ordinary Least Squares</h5>
@@ -540,7 +540,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 	<p>Based on this observation and plotting the timbre segment values over the decades, we see that loudness is consistently increasing, b6 and flatness are consistently decreasing, and brightness alternates. The other timbre segments appear to be almost the same across time. Although the tuning/regularlization parameter $\lambda$ found in cross-validation and the coefficient plots with $df(\lambda)$ show that all 12 timbre segments are effective predictors, is there something special about the loudness, b6, brightness and flatness features in particular?
 		<br />
 		<br />
-		<img src="images/timbre_segment_values_over_the_years.png"></img>
+		<img src="images/timbre_segment_values_over_the_years.png" />
 	</p>
 
 	
@@ -579,6 +579,11 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 		<img src="http://i.imgur.com/jH0Rg3U.gif" title="source: imgur.com"/>
 	</p>
 
+	<h3 style="text-align: center">"Everything is cool when you're part of a team!"</h3>
+	<p style="margin-left: 15%">
+		<iframe width="420" height="315" src="https://www.youtube.com/embed/cCKONHUigVk" frameborder="0" allowfullscreen></iframe>
+	</p>
+
     </section>
 
     <!-- Team Section -->
@@ -589,62 +594,20 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Meet the $A^*$ Team!</h2>
-                    <h3 class="section-subheading text-muted">The UCSD Data Scientist and Analysts of the Future</h3>
+                    <h3 class="section-subheading" style="text-align: center">The UCSD Data Scientist and Analysts of the Future</h3>
                 </div>
             </div>
-
-            <div class="row">
-		<div class="col-md-6">
-                    <div class="team-member">
-                        <h4>Vicente Malave</h4>
-                        <p class="text-muted">Machine Learning PhD<br />
-					      Musicology Domain Expert<br />
-					      <a href="http://vicentemalave.com/">http://vicentemalave.com/</a>
-			</p>
-
-                        <ul class="list-inline social-buttons">
-<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li> -->
-                            <li><a href="https://www.linkedin.com/pub/vicente-malave/8/447/2a4"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-	       </div>
-
-
-		<div class="col-md-6">
-                    <div class="team-member">
-                        <h4>Emanuele Coviello</h4>
-                        <p class="text-muted">Machine Learning PhD<br />
-					      Co Founder at Keevio Inc.<br />
-					      <br />
-			</p>
-
-                        <ul class="list-inline social-buttons">
-<!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li> -->
-                            <li><a href="https://www.linkedin.com/company/keevio"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-	    	</div>
-	    </div>
-
 
             <div class="row">
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="https://pbs.twimg.com/profile_images/530482329622700037/LsMNkfUX_200x200.jpeg" class="img-responsive img-circle" alt="">
                         <h4>Jasmine Wang</h4>
-                        <p class="text-muted">Cornell Graduate School Applicant<br />
-					      Tutor, Department of Mathematics at UCSD<br />
-                                              Math Major and Art Minor <br />
-					      Graduate Undergraduate Learning Program	
-			</p>
+                        <p class="text-muted">Cornell University, Graduate Candidate<br />
+					      Tutor at UCSD Mathematics Department<br />
+      					      Graduate Undergraduate Learning Program<br />
+                                              B.S. Mathematics, Minor in Art
+			</p>	
 
                         <ul class="list-inline social-buttons">
 <!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
@@ -662,7 +625,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
                         <h4>Sarah Ji</h4>
                          <p class="text-muted">Biostatistics/Bioinformatics Research Project Assistant<br />
 					      Calculus Teaching Assistant & Lab Tutor<br />
-                                              Applied Math Major
+                                              B.S. Applied Mathematics
 			</p>
                         <ul class="list-inline social-buttons">
 <!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
@@ -681,7 +644,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
                         <h4>Celina Chow</h4>
                         <p class="text-muted">Economics-Business Candidate<br />
 					      TEDxUCSD Organizer<br />
-                                              VP of Internal, DS3 at UCSD<br />
+                                              VP of Internal: DS3 at UCSD<br />
 					      Lead Logo Designer
 			</p>
 
@@ -700,12 +663,13 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 
             <div class="row">
                 <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="https://media.licdn.com/mpr/mpr/shrink_200_200/p/7/005/0b1/394/1ed92d6.jpg" class="img-responsive img-circle" alt="">
+
+                   <div class="team-member">
+			<img src="images/team/kev.jpg" class="img-responsive img-circle" alt="">
                         <h4>Kevin Hung</h4>
-                        <p class="text-muted">Aspiring Data Analyst/SW Engineer<br />
-					      Director of Marketing, DS3 at UCSD<br />
-                                              Computer Science Major and Math Minor <br />
+                        <p class="text-muted">Data Science Visionary<br />
+					      Director of Marketing: DS3 at UCSD<br />
+					      B.S. Computer Science, Minor in Mathematics
 			</p>
 
                         <ul class="list-inline social-buttons">
@@ -717,14 +681,16 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
                             </li>
                         </ul>
                     </div>
+
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="images/team/joshy.jpg" class="img-responsive img-circle" alt="">
                         <h4>Joshua Wheeler</h4>
-                         <p class="text-muted">Technology Manager at <a href="http://ayearwithoutwar.org/">2020 A Year Without War</a><br />
-					      VP of Web Management, DS3 at UCSD<br />
-                                              Computer Science Major
+                         <p class="text-muted">Technology Manager at <br />
+					      <a href="http://ayearwithoutwar.org/">2020 A Year Without War</a><br />
+					      VP of Web Management: DS3 at UCSD<br />
+                                              B.S. Computer Science
 			</p>
                         <ul class="list-inline social-buttons">
 <!--                            <li><a href="#"><i class="fa fa-twitter"></i></a>
@@ -739,11 +705,11 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="images/team/potato.gif" class="img-responsive img-circle" title="http://imgur.com/gallery/KPtGhWE" alt="http://imgur.com/gallery/KPtGhWE">
-                        <h4>Alex Bautista</h4>
-                        <p class="text-muted">Mathematics-Economics Major<br />
-					      UCSD Catering<br />
-                                              San Diego Botanic Garden<br />
+                        <img src="images/team/vicente.jpg" class="img-responsive img-circle" title="http://imgur.com/gallery/KPtGhWE" alt="http://imgur.com/gallery/KPtGhWE">
+                        <h4>Vicente Malave</h4>
+                        <p class="text-muted">Machine Learning PhD<br />
+					      Musicology Specialist/Domain Expert<br />
+					      <a href="http://vicentemalave.com/">http://vicentemalave.com/</a><br /><br />
 			</p>
 
                         <ul class="list-inline social-buttons">
@@ -751,31 +717,12 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
                             </li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a>
                             </li> -->
+                            <li><a href="https://www.linkedin.com/pub/vicente-malave/8/447/2a4"><i class="fa fa-linkedin"></i></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-	    <div class="row">
-		<div class="col-sm-4">
-                    <div class="team-member">
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="images/team/ryan.jpg" class="img-responsive img-circle">
-                        <h4>Ryan</h4>
-                    </div>
-
-
-		<div class="col-sm-4">
-                    <div class="team-member">
-                    </div>
-                </div>
-
-	    </div>
-
 
 
             <div class="row">

@@ -11,7 +11,8 @@ body {
 
 .text-muted {
     color: #777;
-    text-align: none
+    text-align: justify;
+    padding-left: 10%;
 }
 
 .text-primary {
