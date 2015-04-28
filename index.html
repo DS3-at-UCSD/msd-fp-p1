@@ -272,7 +272,7 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 	   and testing is required.
 	</p>
 
-	<p>And a final note about studying the distribution of any given data in general, on these kinds of tough questions it is often a good strategy to seek help from field experts, ask questions about possible sources the data originated from, as well listen to words of wisdom handed down by a more experienced Data Science mentor, for example in particular, a friend named Emanuele who is an alumnus of UCSD has kindly imparted to us, in regards to the Million Song Dataset, some helpful advice:</p>
+	<p>And a final note about studying the distribution of any given data in general, on these kinds of tough questions it is often a good strategy to seek help from field experts, ask questions about possible sources the data originated from, as well listen to words of wisdom handed down by a more experienced Data Science mentor. For example in particular, a friend named Emanuele who is an alumnus of UCSD has kindly imparted to us, in regards to the Million Song Dataset, some helpful advice:</p>
 
 	<blockquote>
 		<p>"Be careful about drawing general conclusions about music from this specific exercise. The Million Song Dataset is not necessary a random sample of all the music out there, and through time. As a consequence, some of the observations you made may be an artifact of the specific way that dataset was built."</p>
@@ -350,7 +350,7 @@ src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas
 		</ul>
 	</p>
 
-	<p>In the following sections we will propose descriptive as well as linear explanations of the variance in the response variables (y-axis) by finding the coefficient of determination $r^2$ and simple linear models in R.
+	<p>In the following sections we will propose descriptive as well as linear explanations of the variance in the response variables (y-axis) by finding the coefficient of determination $r^2$ and plotting simple linear models in R.
 	</p>
 
 	<h5 style="margin-left: 35%">Hotness & Familiarity</h5>
@@ -482,7 +482,7 @@ We see that artists in the later decades were more experimental in trying out lo
 
 	<h5 style="margin-left: 35%">Ordinary Least Squares</h5>
 	<p> Since the last 51,630 examples of the UCI dataset were set apart for testing, we used randomly selected 20% of the 463,715 training data points to be used as cross-validation on a task further on and the rest of the 80% as training data. Using R's <tt>lm</tt> command for linear models, we obtained a training error of $$MSE_{train}(OLS) = 100.7227$$
-and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted to say that the average residual is approximately 10 years, since the $MSE$ has units in terms of squared years. For those who are new to $MSE$, it's very simply the $RSS$ divided by the number of data points we have $n$ to give us a sense of how good our predictions are.
+and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted to say that the average residual is approximately 10 years, since the $MSE$ has units in terms of squared years. For those who are new to $MSE$, it's very simply the $RSS$ divided by the number of data points we have $n$ to give us a sense of how good our predictions are: $MSE = RSS/n$.
 	</p>
 	<p> A residual plot below visualizes the distribution of the errors between predicted and actual years on the training set, with respect to our OLS model colored in blue. And it looks like most of the residuals are distributed between the mid 1980s to 2000s, which is reasonable since our pie chart that we created in the explore section showed that the proportion of songs of those decades account for roughly 90% of the training sample.
 	</p>
@@ -572,7 +572,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 
 	<p>To conclude our presentation, we intend to reflect this theme of teamwork by creating a visual model that combines the efforts and findings from linear regression (the three interesting timbre segments: loudness, b6 and flatness) and the results from k-nearest neighbors regression on the testing set.
 	</p>
-	<p>A fleeting observation from this plot brings to light a possible separation boundary for 2000s and 1990s songs when $b6 \approx -40$, and possibly more observations can be drawn simply because we've decided to try and see the data in a novel way. New ideas can be created by seeing and visualizing from different perspectives, and we're curious to hear: what's yours?
+	<p>A fleeting observation from this plot brings to light a possible separation boundary for 2000s and 1990s songs when $b6 \approx -40$, and possibly more observations can be drawn simply because we've decided to try and see the data in a novel way. New ideas can be created by visualizing from different perspectives, and we're curious to hear: what's yours?
 	</p>
 
 	<p>
@@ -580,7 +580,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 	</p>
 
 	<h3 style="text-align: center">"Everything is cool when you're part of a team!"</h3>
-	<p>And here's our favorite song from 2014!
+	<p style="text-align: center">And here's our favorite song from 2014!
 
 	</p>
 	<p style="margin-left: 15%">
@@ -594,10 +594,10 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
     <!-- <a href="http://imgur.com/KPtGhWE"><img src="http://i.imgur.com/KPtGhWE.gif" title="source: imgur.com" /></a> -->
     <section id="team" class="bg-light-gray">
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-top: -5%">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Meet the $A^*$ Team!</h2>
-                    <h3 class="section-subheading" style="text-align: center">The UCSD Data Scientist and Analysts of the Future</h3>
+                    <h3 class="section-subheading" style="text-align: center; margin-bottom: 0;">The UCSD Data Scientist and Analysts of the Future</h3>
                 </div>
             </div>
 
@@ -647,7 +647,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
                         <h4>Celina Chow</h4>
                         <p class="text-muted">Economics-Business Candidate<br />
 					      TEDxUCSD Organizer<br />
-                                              VP of Internal: DS3 at UCSD<br />
+                                              VP of Internal: DS3 @ UCSD<br />
 					      Lead Logo Designer
 			</p>
 
@@ -671,7 +671,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 			<img src="images/team/kev.jpg" class="img-responsive img-circle" alt="">
                         <h4>Kevin Hung</h4>
                         <p class="text-muted">Data Science Visionary<br />
-					      Director of Marketing: DS3 at UCSD<br />
+					      Director of Marketing: DS3 @ UCSD<br />
 					      B.S. Computer Science, Minor in Mathematics
 			</p>
 
@@ -692,7 +692,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
                         <h4>Joshua Wheeler</h4>
                          <p class="text-muted">Technology Manager at <br />
 					      <a href="http://ayearwithoutwar.org/">2020 A Year Without War</a><br />
-					      VP of Web Management: DS3 at UCSD<br />
+					      VP of Web Management: DS3 @ UCSD<br />
                                               B.S. Computer Science
 			</p>
                         <ul class="list-inline social-buttons">
@@ -712,7 +712,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
                         <h4>Vicente Malave</h4>
                         <p class="text-muted">Machine Learning PhD<br />
 					      Musicology Specialist/Domain Expert<br />
-					      <a href="http://vicentemalave.com/">http://vicentemalave.com/</a><br /><br />
+					      <a href="http://vicentemalave.com/">vicentemalave.com</a><br /><br />
 			</p>
 
                         <ul class="list-inline social-buttons">
@@ -744,7 +744,15 @@ $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$</p> -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Join the Data Science community at UCSD today!</h2>
+                    <h2 class="section-heading">Join the Data Science community at UCSD today!
+			<ul class="list-inline social-buttons" style="display: inline;">
+				<li class="">
+						<a class="glow" href="https://www.facebook.com/groups/653974278012361/">
+							<i class="fa fa-facebook"></i>
+						</a>
+				</li>
+			</ul>
+		    </h2>
 <!--                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
                 </div>
             </div>
