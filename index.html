@@ -449,14 +449,14 @@ We see that artists in the later decades were more experimental in trying out lo
 
 	<p>
 		The regression aspect refers to our goal in predicting year values -- a continuous numerical value. And to make sure that our predictions for year values are good, we introduce another function $\mathcal{L}(X, \beta, y)$, called a "loss", that gives us a sense of the holistic error value of our model. A typical and well known loss function is the infinitely differentiable squared error:
-		$$(f(X) - y)^2$$ where $y$ is the training label (in our case the year of the song).
+		$$(f(X; \beta) - y)^2$$ where $y$ is the training label (in our case the year of the song).
 	</p>
 
 	<p>
 		To estimate the error over our $p$-dimensional data points ranging from $i = 1, 2, ..., n$ in our sample, we use the residual sum of squares:
 		$$\begin{align} RSS(\beta) &= \sum\limits_{i = 1}^n (f(X^{(i)}) - y^{(i)})^2 \\
                                            &= \sum\limits_{i = 1}^n ((\beta_0 + \sum\limits_{j=1}^p {X_j}^{(i)} \beta_j) - y^{(i)})^2 \\
-                                           &= {{\|\hat{y} - y\|}_2}^2 \end{align}$$
+                                           &= {{\|\hat{y} - y\|}}_2^2 \end{align}$$
 	</p>
 
 	<p>The third line is simply the square of the $\ell$-2 norm for our residuals $\hat{y} - y$, and $X_0$ can sometimes be considered to have a constant value of 1 implicitly so that we can also write $RSS(\beta)$ as $(X^T\beta- y)^2$.
@@ -482,7 +482,7 @@ We see that artists in the later decades were more experimental in trying out lo
 
 	<h5 style="margin-left: 35%">Ordinary Least Squares</h5>
 	<p> Since the last 51,630 examples of the UCI dataset were set apart for testing, we used randomly selected 20% of the 463,715 training data points to be used as cross-validation on a task further on and the rest of the 80% as training data. Using R's <tt>lm</tt> command for linear models, we obtained a training error of $$MSE_{train}(OLS) = 100.7227$$
-and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted to say that the average residual is approximately 10 years, since the $MSE$ has units in terms of squared years. For those who are new to $MSE$, it's very simply the $RSS$ divided by the number of data points we have $n$ to give us a sense of how good our predictions are: $MSE = RSS/n$.
+and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted to say that the average residual is approximately 10 years, since the $MSE$ has units in terms of squared years. For those who are new to $MSE$, it's very simply the $RSS$ divided by the number of data points we have $n$ to give us a sense of how good our predictions are: $MSE = {RSS \over n}$.
 	</p>
 	<p> A residual plot below visualizes the distribution of the errors between predicted and actual years on the training set, with respect to our OLS model colored in blue. And it looks like most of the residuals are distributed between the mid 1980s to 2000s, which is reasonable since our pie chart that we created in the explore section showed that the proportion of songs of those decades account for roughly 90% of the training sample.
 	</p>
@@ -501,7 +501,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 
 	<p>In the effort to combat overfitting, we proceed to incorporate an extra "tuning" parameter $\lambda$ into our model, which we find in the cross-validation stage to obtain a "penalty" function $\mathcal{R}(\lambda, \beta)$ to help regularize and add onto the original loss function from OLS and obtain a new minimization objective:
 
-		$$\hat{\beta} = \underset{\beta}{\arg\min} \big\{ {{\|\hat{y} - y\|}_2}^2 + \lambda {{\|\beta\|}_2}^2 \big\}$$
+		$$\hat{\beta} = \underset{\beta}{\arg\min} \big\{ {{\|\hat{y} - y\|}}_{2}^2 + \lambda {{\|\beta\|}}_{2}^2 \big\}$$
 
 	</p>
 	<p>Running cross-validation on the randomly selected 20% of the training set, we see in the below plot that $\lambda_{min} = 740$, although the $MSE$ values for both OLS and Ridge are close to $101 \textrm{ year}^2 \approx 10 \textrm{ years}$.
@@ -521,7 +521,7 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 
 	<p>We attempt LASSO as another option to improve the $MSE$ for our linear regression models with the LASSO variant by changing the penalty function to use the $\ell$-1 norm:
 
-		$$\hat{\beta} = \underset{\beta}{\arg\min} \big\{ {{\|\hat{y} - y\|}_2}^2 + \lambda {{\|\beta\|}_1} \big\}$$
+		$$\hat{\beta} = \underset{\beta}{\arg\min} \big\{ {{\|\hat{y} - y\|}}_2^2 + \lambda {{\|\beta\|}_1} \big\}$$
 
 	</p>
 	<p>Applying similar cross-validation steps as the ridge and using the <tt>lars</tt> package in R, it's possible there may have been a mistake as the plot below shows no improvement at all in terms of $MSE$ when applying LASSO. The OLS error is still better and as a result $\lambda = 0$.
@@ -547,7 +547,15 @@ and a testing error of $$MSE_{test}(OLS) = 100.1526$$, which can be interpreted 
 	<br />
 	<h3>Comparison with Classic Model: k-NN Regression</h3>
 
-	<p>When looking over the <a href="https://www.ee.columbia.edu/~dpwe/pubs/BertEWL11-msd.pdf">original research paper</a> describing the Million Song Dataset, there's an interesting section in 4.2 near the end explaining how the first benchmarked model used is the simple, classic, and non-parametric k-nearest neighbors algorithm. At UCSD, the CSE department's foundational undergraduate machine learning algorithm class  is <a href="http://cseweb.ucsd.edu/~kamalika/#teaching">Introduction to AI: A Statistical Approach</a>, and students are sometimes introduced to k-NN as their first algorithm encountered and also use it on the very famous Iris flower dataset for classification. For the song dataset we're working with however, we will use k-NN for regression by averaging the year labels of the k closest data points under Euclidian distance metric. With the power of sci-kit learn in Python, k-NN training on our 370,972 data points which took around 20 minutes (possibly because the training complexity is $O(N^2)$ without using optimizing structures or hashing techniques so that we are looking at $370972^2 \approx 137 \textrm{ billion}$ data points, although we can examine more in depth <a href="https://github.com/scikit-learn/scikit-learn/blob/bb39b49/sklearn/neighbors/regression.py#L19">its implementation</a> at another point in time).
+	<p>When looking over the <a href="https://www.ee.columbia.edu/~dpwe/pubs/BertEWL11-msd.pdf">original research paper</a> describing the Million Song Dataset, there's an interesting section in 4.2 near the end explaining how the first benchmarked model used is the simple, classic, and non-parametric k-nearest neighbors algorithm. At UCSD, the CSE department's foundational undergraduate machine learning algorithm class  is <a href="http://cseweb.ucsd.edu/~kamalika/#teaching">Introduction to AI: A Statistical Approach</a>, and students are sometimes introduced to k-NN as their first algorithm encountered and also use it on the very famous Iris flower dataset for classification.
+	</p>
+	<p>For the song dataset we're working with however, we will use k-NN for regression by averaging the year labels of the k closest data points under Euclidian distance metric:
+
+	$$ \textrm{YearLabel}(\textrm{song}_x) = {1 \over{k} } \sum \limits_{\textrm{song}_z \in \mathcal{N}_k} \textrm{YearLabel}(\textrm{song}_z) $$, where
+
+	$\mathcal{N}_k$ is the neighborhood/set of the $k \textrm{ song}_z$ data points that have the smallest $d = \ell$-2$(\textrm{song}_x, \textrm{song}_z)$ squared Euclidian distance values.
+	</p>
+	<p> With the power of sci-kit learn in Python, k-NN training on our 370,972 data points which took around 20 minutes (possibly because the training complexity is $O(N^2)$ without using optimizing structures or hashing techniques so that we are looking at $370972^2 \approx 137 \textrm{ billion}$ data points, although we can examine more in depth <a href="https://github.com/scikit-learn/scikit-learn/blob/bb39b49/sklearn/neighbors/regression.py#L19">its implementation</a> at another point in time).
 	</p>
 
 	<p>
